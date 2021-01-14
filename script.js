@@ -1,23 +1,28 @@
 function compute()
 {
     var p = document.getElementById("principal").value;
-    var i = document.getElementById("rate").value;
-    var y = document.getElementById("years").value;
 
-    // console.log(p);
-    // console.log(i);
-    // console.log(y);
+    if(p <= 0) {
+        alert('Please enter a positive number');
+        document.getElementById('principal').focus();
+    }
 
-    var si = p*(i/100)*y;
+    else {
+        var i = document.getElementById("rate").value;
+        var y = document.getElementById("years").value;
+    
+        var si = p*(i/100)*y;
+    
+        var date = new Date().getFullYear();
+        var d = date+parseInt(y);
+    
+        var res = document.getElementById('result');
+        res.innerHTML = `<p>If you deposit <mark>${p}</mark>,
+                        </p><p>at an interest rate of <mark>${i}%</mark>.</p>
+                        <p>You will receive an amount of <mark>${si}</mark>,</p>
+                        <p>in the year <mark>${d}</mark></p>`;
+    }
 
-    var date = new Date().getFullYear();
-    var d = date+parseInt(y);
-
-    var res = document.getElementById('result');
-    res.innerHTML = `<p>If you deposit <mark>${p}</mark>,
-                    </p><p>at an interest rate of <mark>${i}%</mark>.</p>
-                    <p>You will receive an amount of <mark>${si}</mark>,</p>
-                    <p>in the year <mark>${d}</mark></p>`;
 }
 
 
